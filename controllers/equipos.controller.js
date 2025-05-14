@@ -24,7 +24,8 @@ module.exports = {
         return res.json({});
     },
     create: (req, res) => {
-        
+        console.log('getById')
+        return res.json(req.body);
     },
     update: (req, res) => {
 

@@ -1,12 +1,15 @@
 
+const authToken = require('../middlewares/jwt.mid.js')
 
 function equiposRouter(express){
     const router = express.Router()
     const { getAll, getById, create, update, remove } = require('../controllers/equipos.controller.js')
 
+    router.use(authToken)
+    
     router.get('/', getAll)
     router.get('/:id', getById)
-    router.post('/', create)
+    router.post('/', authToken, create)
     router.put('/:id', update)
     router.delete('/:id', remove)
 
@@ -29,6 +32,7 @@ function equiposRouter(express){
 
     return router
 }
+
 
 
 module.exports = equiposRouter
